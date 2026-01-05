@@ -94,11 +94,11 @@
 
 /*** Composition ***/
 .flow>*+* {
-  margin-block-start: var(--flow-space);
+    margin-block-start: var(--flow-space);
 }
 
 .flow-lg>*+* {
-  margin-block-start: var(--flow-space-lg);
+    margin-block-start: var(--flow-space-lg);
 }
 
 /*
@@ -108,19 +108,19 @@ https://www.youtube.com/watch?v=cf-J4ffMBfo
 */
 .content-grid,
 .fullwidth {
-  --_content-width: 70rem;
-  --_min-margin-width: 1rem;
+    --_content-width: 70rem;
+    --_min-margin-width: 1rem;
 
-  display: grid;
-  grid-template-columns: [fullwidth-start] minmax(var(--_min-margin-width), 1fr) [content-start] min(100% - var(--_min-margin-width) * 2,
-      var(--_content-width)) [content-end] minmax(var(--_min-margin-width), 1fr) [fullwidth-end];
-  /*  grid-template-rows: [fullwidth-start] auto [fullwidth-end];*/
+    display: grid;
+    grid-template-columns: [fullwidth-start] minmax(var(--_min-margin-width), 1fr) [content-start] min(100% - var(--_min-margin-width) * 2,
+												       var(--_content-width)) [content-end] minmax(var(--_min-margin-width), 1fr) [fullwidth-end];
+    /*  grid-template-rows: [fullwidth-start] auto [fullwidth-end];*/
 }
 
 /* keep the content of the content-grid and fullwidth inside the content container */
 .content-grid>*,
 .fullwidth>* {
-  grid-column: content;
+    grid-column: content;
 }
 
 /* a bit more complex but more fancy/explicit version of above */
@@ -131,7 +131,7 @@ https://www.youtube.com/watch?v=cf-J4ffMBfo
 
 /* if we have a fullwidth inside of a content-grid put this in the fullwidth container */
 .content-grid>.fullwidth {
-  grid-column: fullwidth;
+    grid-column: fullwidth;
 }
 
 
@@ -150,6 +150,8 @@ body {
 }
 
 .navbar__logo {
+    display: flex;
+    gap: 0.5em;
     padding: 1em 0;
     text-align: left;
     color: var(--clr-accent);
@@ -181,14 +183,16 @@ body {
     }
 }
 
+.navbar__burger {
+    display: none;
+}
+
 .header {
     text-align: center;
-    /* width: 100%; */
 }
 
 .main {
     text-align: center;
-    /* width: 100%; */
 }
 
 .header__heading {
@@ -232,6 +236,7 @@ body {
 .cta {
     background-color: var(--clr-primary-light-1);
     display: flex;
+    flex-direction: rows;
     justify-content: center;
     align-items: center;
     gap: 6em;
@@ -288,7 +293,6 @@ body {
 }
 
 .cta__img-container {
-    /* width: min-content; */
     width: 250px;
     height: 250px;
     background-color: var(--clr-accent);
@@ -317,9 +321,6 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
     gap: 1em;
-    /* width: 68em; */
-    /* height: 50em; */
-    /* margin-inline: auto; */
 }
 
 .card {
@@ -333,16 +334,12 @@ body {
 
 .card__img {
     object-fit: cover;
-    /* aspect-ratio: 5 / 4; */
 }
 
 .card__title {
-
     text-align: left;
-
     font-size: var(--fs-600);
     font-weight: var(--fw-semi-bold);
-
     padding-inline: 0.65em;
 }
 
@@ -356,6 +353,16 @@ body {
 .card__badges {
     text-align: left;
     padding-inline: 1em;
+
+    a {
+	background-color: var(--clr-green);
+	color: var(--clr-primary-light-1);
+	border-radius: 36px;
+	text-decoration: none;
+	padding: 0.4em 0.6em;
+	font-weight: var(--fw-bold);
+	font-size: var(--fs-100);
+    }
 }
 
 .card__author {
@@ -465,6 +472,10 @@ body {
 	padding-inline: 2em;
     }
 
+    .footer {
+	padding-inline: 1em;
+    }
+
     .grid-banner {
 	grid-template-columns: repeat(2, 1fr);
 
@@ -479,7 +490,23 @@ body {
 	padding-inline: 2em;
     }
 
+    .navbar__burger {
+	display: block;
+    }
+
+    .cta--reverse {
+	flex-direction: column-reverse;
+    }
+
+    .cta--no-reverse {
+	flex-direction: column;
+    }
+
     .navbar__links {
+	display: none;
+    }
+
+    .footer__links {
 	display: none;
     }
 
